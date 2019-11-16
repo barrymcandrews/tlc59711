@@ -16,4 +16,8 @@ pybind11_add_module(tlc59711-python src/tlc59711.cpp src/bindings.cpp)
 target_link_libraries(tlc59711-python bcm2835)
 
 include(GNUInstallDirs)
-install(TARGETS tlc59711 DESTINATION "${CMAKE_INSTALL_LIBDIR}")
+install(TARGETS tlc59711
+        ARCHIVE  DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        LIBRARY  DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        RUNTIME  DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
