@@ -1,0 +1,9 @@
+
+.idea
+CMakeFiles
+build
+Makefile
+*.cpb
+CMakeCache.txt
+cmake_install.cmake
+.clion.source.upload.marker
