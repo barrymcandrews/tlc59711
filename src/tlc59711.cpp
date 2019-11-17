@@ -1,6 +1,10 @@
 #include <bcm2835.h>
 #include <cstdio>
 #include <cstring>
+#include <ios>
+#include <iomanip>
+#include <iostream>
+#include <bitset>
 #include "tlc59711.h"
 
 
@@ -38,9 +42,25 @@ void TLC59711::write() {
   command_buffer[1] = (char) ((command >> 16) & 0xff);
   command_buffer[2] = (char) ((command >> 8) & 0xff);
   command_buffer[3] = (char) ((command >> 0) & 0xff);
-  memcpy(command_buffer + 4, &pwmbuffer, 24);
 
+  uint8_t pwmbuffer_reversed[24];
+  for (int i = 0; i < 24; i++) {
+    pwmbuffer_reversed[i] = ((uint8_t *)pwmbuffer)[23 - i];
+  }
+
+  memcpy(command_buffer + 4, pwmbuffer_reversed, 24);
   bcm2835_spi_writenb(command_buffer, 28);
+
+//  for (int i = 4; i < 6; i++) {
+//    std::cout << i << "        ";
+//  }
+//  std::cout << std::endl;
+//
+//  for (int i = 4; i < 6; i++) {
+//    std::bitset<8> x(command_buffer[i]);
+//    std::cout << x << " ";
+//  }
+//  std::cout << std::endl;
 }
 
 /*!
