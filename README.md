@@ -1,6 +1,6 @@
 # C++ library for controlling LED Driver TLC59711 from a Raspberry Pi
- **(with python bindings!)**
- ---
+ *with python bindings!*
+ 
 
 The TLC59711 is a 12-channel 16-bit PWM LED driver controlled via SPI. This project adapts [Adafruit's TLC59711 Library for Arduino](https://github.com/adafruit/Adafruit_TLC59711) into a C++ library for Raspberry Pi. It uses the [BCM2835 C library](https://www.airspayce.com/mikem/bcm2835/) to send SPI messages to the driver.
 
